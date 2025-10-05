@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Meu Filho — Gerador de Convites</title>
+<style>
+  :root{
+    --bg-primary:#1a0f0a;
+    --bg-secondary:#2d1810;
+    --bg-card:#3d2418;
+    --accent:#ff7f3f;
+    --accent-hover:#ff6b1f;
+    --accent-light:#ffb380;
+    --sunset-orange:#ff6b1f;
+    --sunset-coral:#ff8c5a;
+    --sunset-peach:#ffb380;
+    --text-primary:#fff5ed;
+    --text-secondary:#d4a88a;
+    --border:rgba(255,127,63,.2);
+    --shadow:rgba(0,0,0,.6);
+  }
+  
+  *{box-sizing:border-box;margin:0;padding:0}
+  
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:linear-gradient(135deg,#1a0f0a 0%,#2d1810 50%,#3d2418 100%);
+    color:var(--text-primary);
+    min-height:100vh;
+    padding:24px 16px;
+    line-height:1.6;
+  }
+  
+  .container{
+    max-width:1000px;
+    margin:0 auto;
+  }
+  
+  header{
+    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.1) 100%);
+    padding:20px 24px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 4px 20px var(--shadow);
+    border:1px solid var(--border);
+  }
+  
+  .header-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  
+  .header-text h1{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:4px;
+    color:var(--accent-light);
+    text-shadow:0 2px 8px rgba(255,127,63,.4);
+  }
+  
+  .header-text p{
+    font-size:14px;
+    color:var(--text-secondary);
+  }
+  
+  .date-display{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--bg-secondary);
+    padding:12px 20px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    box-shadow:0 0 20px rgba(255,127,63,.2);
+  }
+  
+  .date-display .icon{
+    font-size:20px;
+  }
+  
+  .date-display .date-text{
+    font-size:18px;
+    font-weight:600;
+    color:var(--accent);
+  }
+  
+  .controls-card{
+    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.08) 100%);
+    padding:20px 24px;
+    border-radius:12px;
+    margin-bottom:16px;
+    box-shadow:0 4px 20px var(--shadow);
+    border:1px solid var(--border);
+  }
+  
+  .controls{
+    display:flex;
+    gap:16px;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+  
+  .control-group{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  
+  .control-group label{
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-secondary);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  
+  .control-group input{
+    width:90px;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:var(--bg-secondary);
+    color:var(--text-primary);
+    font-size:15px;
+    font-weight:600;
+    transition:all .2s;
+  }
+  
+  .control-group input:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(255,127,63,.2);
+  }
+  
+  .btn{
+    padding:10px 20px;
+    border-radius:8px;
+    border:none;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  
+  .btn-primary{
+    background:linear-gradient(135deg,var(--sunset-orange) 0%,var(--sunset-coral) 100%);
+    color:#fff;
+    box-shadow:0 4px 12px rgba(255,127,63,.3);
+  }
+  
+  .btn-primary:hover{
+    background:linear-gradient(135deg,var(--accent-hover) 0%,var(--sunset-orange) 100%);
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(255,127,63,.5);
+  }
+  
+  .btn-secondary{
+    background:transparent;
+    color:var(--text-secondary);
+    border:1px solid var(--border);
+  }
+  
+  .btn-secondary:hover{
+    background:var(--bg-secondary);
+    color:var(--accent-light);
+    border-color:var(--accent);
+  }
+  
+  .spacer{
+    margin-left:auto;
+  }
+  
+  .groups-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+    margin-bottom:16px;
+  }
+  
+  .group-card{
+    background:var(--bg-secondary);
+    padding:14px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    transition:all .2s;
+  }
+  
+  .group-card:hover{
+    border-color:var(--accent);
+    box-shadow:0 4px 12px rgba(255,127,63,.3);
+    transform:translateY(-2px);
+  }
+  
+  .group-title{
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:10px;
+    color:var(--accent-light);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  
+  .levas-container{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+  
+  .leva-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius:6px;
+    background:var(--bg-primary);
+    cursor:pointer;
+    transition:all .2s;
+    user-select:none;
+    border:1px solid transparent;
+  }
+  
+  .leva-item:hover{
+    background:rgba(255,127,63,.15);
+    border-color:var(--accent);
+  }
+  
+  .leva-item.checked{
+    background:rgba(255,127,63,.2);
+    border-color:var(--accent);
+  }
+  
+  .leva-checkbox{
+    width:20px;
+    height:20px;
+    border-radius:4px;
+    background:var(--bg-secondary);
+    border:2px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    transition:all .2s;
+    flex-shrink:0;
+  }
+  
+  .leva-item.checked .leva-checkbox{
+    background:linear-gradient(135deg,var(--sunset-orange) 0%,var(--sunset-coral) 100%);
+    border-color:var(--accent);
+    box-shadow:0 0 10px rgba(255,127,63,.4);
+  }
+  
+  .leva-label{
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-secondary);
+  }
+  
+  .leva-item.checked .leva-label{
+    color:var(--accent-light);
+  }
+  
+  .actions{
+    display:flex;
+    gap:10px;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+  }
+  
+  .output-container{
+    background:var(--bg-secondary);
+    padding:16px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    font-family:'Courier New',monospace;
+    font-size:13px;
+    line-height:1.8;
+    color:var(--text-primary);
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    max-height:400px;
+    overflow-y:auto;
+  }
+  
+  footer{
+    margin-top:20px;
+    padding:16px;
+    text-align:center;
+    font-size:13px;
+    color:var(--text-secondary);
+    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.08) 100%);
+    border-radius:8px;
+    border:1px solid var(--border);
+  }
+  
+  @media(max-width:768px){
+    .header-content{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+    
+    .groups-grid{
+      grid-template-columns:1fr;
+    }
+    
+    .controls{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    
+    .spacer{
+      margin-left:0;
+    }
+    
+    .control-group input{
+      width:100%;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Meu Filho</h1>
+        <p>The Rell Seas is real</p>
+      </div>
+      <div class="date-display">
+        <span class="icon">📅</span>
+        <span class="date-text" id="currentDate"></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls-card">
+    <div class="controls">
+      <div class="control-group">
+        <label>Nº de Grupos</label>
+        <input id="numGroups" type="number" min="1" max="12" value="4"/>
+      </div>
+      <div class="control-group">
+        <label>Levas por grupo</label>
+        <input id="numLevas" type="number" min="1" max="12" value="6"/>
+      </div>
+      <button id="applyBtn" class="btn btn-primary">✓ Aplicar</button>
+      <div class="spacer"></div>
+      <button id="resetBtn" class="btn btn-secondary">↻ Resetar tudo</button>
+    </div>
+
+    <div id="groupsContainer" class="groups-grid"></div>
+
+    <div class="actions">
+      <button id="copyBtn" class="btn btn-primary">📋 Copiar formato Discord</button>
+      <button id="copyPlainBtn" class="btn btn-secondary">Copiar só texto</button>
+    </div>
+
+    <div id="output" class="output-container"></div>
+  </div>
+
+  <footer>
+    💡 <strong>Dica:</strong> Cole o texto direto no Discord e edite substituindo os ícones conforme você completa as levas
+  </footer>
+</div>
+
+<script>
+(() => {
+  const numGroupsInput = document.getElementById('numGroups');
+  const numLevasInput = document.getElementById('numLevas');
+  const applyBtn = document.getElementById('applyBtn');
+  const groupsContainer = document.getElementById('groupsContainer');
+  const outputEl = document.getElementById('output');
+  const copyBtn = document.getElementById('copyBtn');
+  const copyPlainBtn = document.getElementById('copyPlainBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const currentDateEl = document.getElementById('currentDate');
+
+  let groups = [];
+  const emptyBox = '☐';
+  const checkedBox = '✅';
+
+  function updateDate(){
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2,'0');
+    const month = String(today.getMonth()+1).padStart(2,'0');
+    const year = today.getFullYear();
+    currentDateEl.textContent = `${day}/${month}/${year}`;
+  }
+
+  function buildGroups(nGroups, nLevas) {
+    groups = [];
+    groupsContainer.innerHTML = '';
+    
+    for (let g = 1; g <= nGroups; g++) {
+      const group = { id: g, levas: Array.from({length: nLevas}, ()=>false) };
+      groups.push(group);
+
+      const card = document.createElement('div');
+      card.className = 'group-card';
+      
+      const title = document.createElement('div');
+      title.className = 'group-title';
+      title.textContent = `Grupo ${g}`;
+      card.appendChild(title);
+      
+      const levasContainer = document.createElement('div');
+      levasContainer.className = 'levas-container';
+
+      for (let l = 1; l <= nLevas; l++) {
+        const leva = document.createElement('div');
+        leva.className = 'leva-item';
+        leva.dataset.g = g;
+        leva.dataset.l = l;
+        
+        const checkbox = document.createElement('div');
+        checkbox.className = 'leva-checkbox';
+        checkbox.textContent = emptyBox;
+        
+        const label = document.createElement('div');
+        label.className = 'leva-label';
+        label.textContent = `Leva ${l}`;
+        
+        leva.appendChild(checkbox);
+        leva.appendChild(label);
+        leva.addEventListener('click', toggleLeva);
+        levasContainer.appendChild(leva);
+      }
+
+      card.appendChild(levasContainer);
+      groupsContainer.appendChild(card);
+    }
+    renderOutput();
+  }
+
+  function toggleLeva(e){
+    const el = e.currentTarget;
+    const g = Number(el.dataset.g);
+    const l = Number(el.dataset.l);
+    const grp = groups.find(x=>x.id===g);
+    grp.levas[l-1] = !grp.levas[l-1];
+    
+    if (grp.levas[l-1]) {
+      el.classList.add('checked');
+      el.querySelector('.leva-checkbox').textContent = checkedBox;
+    } else {
+      el.classList.remove('checked');
+      el.querySelector('.leva-checkbox').textContent = emptyBox;
+    }
+    renderOutput();
+  }
+
+  function renderOutput(){
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2,'0');
+    const month = String(today.getMonth()+1).padStart(2,'0');
+    const dateStr = `**📅 Dia ${day}/${month}**\n`;
+
+    let lines = [dateStr];
+    for (const grp of groups) {
+      const parts = [`**Grupo ${grp.id}**`];
+      for (let i = 0; i < grp.levas.length; i++) {
+        parts.push(grp.levas[i] ? `${checkedBox} Leva ${i+1}` : `${emptyBox} Leva ${i+1}`);
+      }
+      lines.push(parts.join(' | '));
+    }
+    outputEl.textContent = lines.join('\n');
+  }
+
+  function copyToClipboard(text){
+    navigator.clipboard.writeText(text).then(()=>{
+      const originalText = copyBtn.innerHTML;
+      copyBtn.innerHTML = '✅ Copiado!';
+      setTimeout(()=>{
+        copyBtn.innerHTML = originalText;
+      }, 1500);
+    }).catch(()=>{
+      alert('Não foi possível copiar automaticamente. Selecione o texto e copie manualmente (Ctrl+C).');
+    });
+  }
+
+  applyBtn.addEventListener('click', ()=>{
+    const ng = Math.max(1, Math.min(12, Number(numGroupsInput.value) || 4));
+    const nl = Math.max(1, Math.min(12, Number(numLevasInput.value) || 6));
+    numGroupsInput.value = ng;
+    numLevasInput.value = nl;
+    buildGroups(ng, nl);
+  });
+
+  copyBtn.addEventListener('click', ()=>{
+    copyToClipboard(outputEl.textContent);
+  });
+
+  copyPlainBtn.addEventListener('click', ()=>{
+    const plain = outputEl.textContent.replace(/\*\*/g,'');
+    copyToClipboard(plain);
+  });
+
+  resetBtn.addEventListener('click', ()=>{
+    if (!confirm('Tem certeza que deseja resetar todas as marcações?')) return;
+    buildGroups(Number(numGroupsInput.value), Number(numLevasInput.value));
+  });
+
+  updateDate();
+  buildGroups(Number(numGroupsInput.value), Number(numLevasInput.value));
+  
+  // Atualiza a data à meia-noite
+  setInterval(()=>{
+    const now = new Date();
+    if(now.getHours() === 0 && now.getMinutes() === 0){
+      updateDate();
+      renderOutput();
+    }
+  }, 60000);
+})();
+</script>
+</body>
+</html>
