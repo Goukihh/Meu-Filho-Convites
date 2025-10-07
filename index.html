@@ -21,7 +21,7 @@
     --sunset-peach:#ffb380;
     --text-primary:#fff5ed;
     --text-secondary:#d4a88a;
-    --border:rgba(255,127,63,.2);
+    --border:rgba(255,127,63,.3);
     --shadow:rgba(0,0,0,.6);
   }
   
@@ -37,76 +37,29 @@
   }
   
   .container{
-    max-width:1000px;
+    max-width:1200px;
     margin:0 auto;
   }
   
-  header{
-    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.1) 100%);
-    padding:20px 24px;
-    border-radius:12px;
-    margin-bottom:20px;
-    box-shadow:0 4px 20px var(--shadow);
-    border:1px solid var(--border);
-  }
-  
-  .header-content{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-  }
-  
-  .header-text h1{
+  .header-date{
     font-size:28px;
     font-weight:700;
-    margin-bottom:4px;
     color:var(--accent-light);
     text-shadow:0 2px 8px rgba(255,127,63,.4);
-  }
-  
-  .header-text p{
-    font-size:14px;
-    color:var(--text-secondary);
-  }
-  
-  .date-display{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    background:var(--bg-secondary);
-    padding:12px 20px;
-    border-radius:8px;
-    border:1px solid var(--border);
-    box-shadow:0 0 20px rgba(255,127,63,.2);
-  }
-  
-  .date-display .icon{
-    font-size:20px;
-  }
-  
-  .date-display .date-text{
-    font-size:18px;
-    font-weight:600;
-    color:var(--accent);
-  }
-  
-  .controls-card{
-    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.08) 100%);
-    padding:20px 24px;
-    border-radius:12px;
-    margin-bottom:16px;
-    box-shadow:0 4px 20px var(--shadow);
-    border:1px solid var(--border);
+    margin-bottom:20px;
+    text-align:center;
   }
   
   .controls{
+    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.08) 100%);
+    padding:16px 20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    border:1px solid var(--border);
     display:flex;
-    gap:16px;
+    gap:12px;
     align-items:flex-end;
     flex-wrap:wrap;
-    margin-bottom:16px;
   }
   
   .control-group{
@@ -116,7 +69,7 @@
   }
   
   .control-group label{
-    font-size:13px;
+    font-size:12px;
     font-weight:600;
     color:var(--text-secondary);
     text-transform:uppercase;
@@ -124,13 +77,13 @@
   }
   
   .control-group input{
-    width:90px;
-    padding:10px 12px;
+    width:80px;
+    padding:8px 12px;
     border-radius:8px;
     border:1px solid var(--border);
     background:var(--bg-secondary);
     color:var(--text-primary);
-    font-size:15px;
+    font-size:14px;
     font-weight:600;
     transition:all .2s;
   }
@@ -142,16 +95,13 @@
   }
   
   .btn{
-    padding:10px 20px;
+    padding:8px 16px;
     border-radius:8px;
     border:none;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
     cursor:pointer;
     transition:all .2s;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
   }
   
   .btn-primary{
@@ -182,93 +132,70 @@
     margin-left:auto;
   }
   
-  .groups-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:12px;
-    margin-bottom:16px;
-  }
-  
-  .group-card{
-    background:var(--bg-secondary);
-    padding:14px;
-    border-radius:10px;
+  .table-container{
+    background:linear-gradient(135deg,var(--bg-card) 0%,rgba(255,127,63,.08) 100%);
+    padding:20px;
+    border-radius:12px;
     border:1px solid var(--border);
-    transition:all .2s;
+    margin-bottom:20px;
+    overflow-x:auto;
   }
   
-  .group-card:hover{
-    border-color:var(--accent);
-    box-shadow:0 4px 12px rgba(255,127,63,.3);
-    transform:translateY(-2px);
-  }
-  
-  .group-title{
-    font-size:14px;
-    font-weight:700;
-    margin-bottom:10px;
-    color:var(--accent-light);
-    text-transform:uppercase;
-    letter-spacing:.5px;
-  }
-  
-  .levas-container{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-  }
-  
-  .leva-item{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 10px;
-    border-radius:6px;
-    background:var(--bg-primary);
-    cursor:pointer;
-    transition:all .2s;
-    user-select:none;
-    border:1px solid transparent;
-  }
-  
-  .leva-item:hover{
-    background:rgba(255,127,63,.15);
-    border-color:var(--accent);
-  }
-  
-  .leva-item.checked{
-    background:rgba(255,127,63,.2);
-    border-color:var(--accent);
-  }
-  
-  .leva-checkbox{
-    width:20px;
-    height:20px;
-    border-radius:4px;
+  table{
+    width:100%;
+    border-collapse:collapse;
     background:var(--bg-secondary);
     border:2px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  }
+  
+  th{
+    background:var(--bg-primary);
+    color:var(--accent-light);
+    padding:12px;
+    text-align:center;
     font-size:14px;
-    transition:all .2s;
-    flex-shrink:0;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    border:2px solid var(--border);
   }
   
-  .leva-item.checked .leva-checkbox{
-    background:linear-gradient(135deg,var(--sunset-orange) 0%,var(--sunset-coral) 100%);
-    border-color:var(--accent);
-    box-shadow:0 0 10px rgba(255,127,63,.4);
-  }
-  
-  .leva-label{
+  td{
+    padding:12px;
+    text-align:center;
+    border:2px solid var(--border);
     font-size:13px;
     font-weight:600;
     color:var(--text-secondary);
   }
   
-  .leva-item.checked .leva-label{
-    color:var(--accent-light);
+  td.leva-label{
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    text-align:left;
+    padding-left:16px;
+  }
+  
+  td.cell-clickable{
+    cursor:pointer;
+    transition:all .2s;
+    background:var(--bg-primary);
+    font-size:18px;
+  }
+  
+  td.cell-clickable:hover{
+    background:rgba(255,127,63,.15);
+    border-color:var(--accent);
+  }
+  
+  td.cell-checked{
+    background:rgba(255,127,63,.25) !important;
+    border-color:var(--accent) !important;
+    box-shadow:inset 0 0 10px rgba(255,127,63,.3);
+  }
+  
+  td.cell-checked::after{
+    content:'✅';
   }
   
   .actions{
@@ -283,14 +210,16 @@
     padding:16px;
     border-radius:8px;
     border:1px solid var(--border);
-    font-family:'Courier New',monospace;
+    font-family:'Courier New',Consolas,'Liberation Mono',Menlo,monospace;
     font-size:13px;
     line-height:1.8;
     color:var(--text-primary);
     white-space:pre-wrap;
     word-wrap:break-word;
-    max-height:400px;
+    max-height:300px;
     overflow-y:auto;
+    letter-spacing:0;
+    font-feature-settings:"liga" 0;
   }
   
   footer{
@@ -305,15 +234,6 @@
   }
   
   @media(max-width:768px){
-    .header-content{
-      flex-direction:column;
-      align-items:flex-start;
-    }
-    
-    .groups-grid{
-      grid-template-columns:1fr;
-    }
-    
     .controls{
       flex-direction:column;
       align-items:stretch;
@@ -326,51 +246,58 @@
     .control-group input{
       width:100%;
     }
+    
+    .table-container{
+      padding:10px;
+    }
+    
+    th, td{
+      padding:8px 4px;
+      font-size:11px;
+    }
   }
 </style>
 </head>
 <body>
 <div class="container">
-  <header>
-    <div class="header-content">
-      <div class="header-text">
-        <h1>Meu Filho</h1>
-        <p>The Rell Seas is real</p>
-      </div>
-      <div class="date-display">
-        <span class="icon">📅</span>
-        <span class="date-text" id="currentDate"></span>
-      </div>
+  <div class="header-date" id="headerDate"></div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Nº de Grupos</label>
+      <input id="numGroups" type="number" min="1" max="12" value="4"/>
     </div>
-  </header>
-
-  <div class="controls-card">
-    <div class="controls">
-      <div class="control-group">
-        <label>Nº de Grupos</label>
-        <input id="numGroups" type="number" min="1" max="12" value="4"/>
-      </div>
-      <div class="control-group">
-        <label>Levas por grupo</label>
-        <input id="numLevas" type="number" min="1" max="12" value="6"/>
-      </div>
-      <button id="applyBtn" class="btn btn-primary">✓ Aplicar</button>
-      <div class="spacer"></div>
-      <button id="resetBtn" class="btn btn-secondary">↻ Resetar tudo</button>
+    <div class="control-group">
+      <label>Levas por grupo</label>
+      <input id="numLevas" type="number" min="1" max="12" value="6"/>
     </div>
+    <button id="applyBtn" class="btn btn-primary">V Aplicar</button>
+    <div class="spacer"></div>
+    <button id="resetBtn" class="btn btn-secondary">↻ Resetar</button>
+  </div>
 
-    <div id="groupsContainer" class="groups-grid"></div>
+  <div class="table-container">
+    <table id="mainTable">
+      <thead>
+        <tr id="tableHeader">
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+  </div>
 
+  <div class="table-container">
     <div class="actions">
       <button id="copyBtn" class="btn btn-primary">📋 Copiar formato Discord</button>
       <button id="copyPlainBtn" class="btn btn-secondary">Copiar só texto</button>
     </div>
-
     <div id="output" class="output-container"></div>
   </div>
 
   <footer>
-    💡 <strong>Dica:</strong> Cole o texto direto no Discord e edite substituindo os ícones conforme você completa as levas
+    💡 <strong>Dica:</strong> Clique nas células da tabela para marcar as levas concluídas
   </footer>
 </div>
 
@@ -379,84 +306,81 @@
   const numGroupsInput = document.getElementById('numGroups');
   const numLevasInput = document.getElementById('numLevas');
   const applyBtn = document.getElementById('applyBtn');
-  const groupsContainer = document.getElementById('groupsContainer');
+  const resetBtn = document.getElementById('resetBtn');
+  const headerDateEl = document.getElementById('headerDate');
+  const tableHeader = document.getElementById('tableHeader');
+  const tableBody = document.getElementById('tableBody');
   const outputEl = document.getElementById('output');
   const copyBtn = document.getElementById('copyBtn');
   const copyPlainBtn = document.getElementById('copyPlainBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const currentDateEl = document.getElementById('currentDate');
 
   let groups = [];
-  const emptyBox = '☐';
-  const checkedBox = '✅';
+  const emptyBox = ' ';
+  const checkedBox = 'V';
 
   function updateDate(){
     const today = new Date();
     const day = String(today.getDate()).padStart(2,'0');
     const month = String(today.getMonth()+1).padStart(2,'0');
-    const year = today.getFullYear();
-    currentDateEl.textContent = `${day}/${month}/${year}`;
+    headerDateEl.textContent = `${day}/${month}`;
   }
 
-  function buildGroups(nGroups, nLevas) {
+  function buildTable(nGroups, nLevas) {
     groups = [];
-    groupsContainer.innerHTML = '';
     
+    // Criar estrutura de dados
     for (let g = 1; g <= nGroups; g++) {
-      const group = { id: g, levas: Array.from({length: nLevas}, ()=>false) };
-      groups.push(group);
-
-      const card = document.createElement('div');
-      card.className = 'group-card';
-      
-      const title = document.createElement('div');
-      title.className = 'group-title';
-      title.textContent = `Grupo ${g}`;
-      card.appendChild(title);
-      
-      const levasContainer = document.createElement('div');
-      levasContainer.className = 'levas-container';
-
-      for (let l = 1; l <= nLevas; l++) {
-        const leva = document.createElement('div');
-        leva.className = 'leva-item';
-        leva.dataset.g = g;
-        leva.dataset.l = l;
-        
-        const checkbox = document.createElement('div');
-        checkbox.className = 'leva-checkbox';
-        checkbox.textContent = emptyBox;
-        
-        const label = document.createElement('div');
-        label.className = 'leva-label';
-        label.textContent = `Leva ${l}`;
-        
-        leva.appendChild(checkbox);
-        leva.appendChild(label);
-        leva.addEventListener('click', toggleLeva);
-        levasContainer.appendChild(leva);
-      }
-
-      card.appendChild(levasContainer);
-      groupsContainer.appendChild(card);
+      groups.push({ id: g, levas: Array.from({length: nLevas}, ()=>false) });
     }
+    
+    // Criar cabeçalho
+    tableHeader.innerHTML = '<th></th>';
+    for (let g = 1; g <= nGroups; g++) {
+      const th = document.createElement('th');
+      th.textContent = `Grupo ${g}`;
+      tableHeader.appendChild(th);
+    }
+    
+    // Criar corpo da tabela
+    tableBody.innerHTML = '';
+    for (let l = 1; l <= nLevas; l++) {
+      const tr = document.createElement('tr');
+      
+      // Coluna de label da leva
+      const tdLabel = document.createElement('td');
+      tdLabel.className = 'leva-label';
+      tdLabel.textContent = `Leva ${l}`;
+      tr.appendChild(tdLabel);
+      
+      // Células para cada grupo
+      for (let g = 1; g <= nGroups; g++) {
+        const td = document.createElement('td');
+        td.className = 'cell-clickable';
+        td.dataset.group = g;
+        td.dataset.leva = l;
+        td.addEventListener('click', toggleCell);
+        tr.appendChild(td);
+      }
+      
+      tableBody.appendChild(tr);
+    }
+    
     renderOutput();
   }
 
-  function toggleLeva(e){
-    const el = e.currentTarget;
-    const g = Number(el.dataset.g);
-    const l = Number(el.dataset.l);
+  function toggleCell(e){
+    const td = e.currentTarget;
+    const g = Number(td.dataset.group);
+    const l = Number(td.dataset.leva);
     const grp = groups.find(x=>x.id===g);
     grp.levas[l-1] = !grp.levas[l-1];
     
     if (grp.levas[l-1]) {
-      el.classList.add('checked');
-      el.querySelector('.leva-checkbox').textContent = checkedBox;
+      td.classList.add('cell-checked');
     } else {
-      el.classList.remove('checked');
-      el.querySelector('.leva-checkbox').textContent = emptyBox;
+      td.classList.remove('cell-checked');
     }
+    
     renderOutput();
   }
 
@@ -464,17 +388,70 @@
     const today = new Date();
     const day = String(today.getDate()).padStart(2,'0');
     const month = String(today.getMonth()+1).padStart(2,'0');
-    const dateStr = `**📅 Dia ${day}/${month}**\n`;
+    const dateText = `${day}/${month}`;
 
-    let lines = [dateStr];
-    for (const grp of groups) {
-      const parts = [`**Grupo ${grp.id}**`];
-      for (let i = 0; i < grp.levas.length; i++) {
-        parts.push(grp.levas[i] ? `${checkedBox} Leva ${i+1}` : `${emptyBox} Leva ${i+1}`);
-      }
-      lines.push(parts.join(' | '));
+    const numLevas = groups[0]?.levas.length || 0;
+    let lines = [];
+    
+    const colWidth = 12; // Largura aumentada para acomodar Unicode
+    
+    // Linha superior da tabela
+    let topLine = '┌─────────';
+    for (let g = 0; g < groups.length; g++) {
+      topLine += '┬' + '─'.repeat(colWidth);
     }
-    outputEl.textContent = lines.join('\n');
+    topLine += '┐';
+    lines.push(topLine);
+    
+    // Linha do cabeçalho com data e grupos
+    let headerLine = `│ ${dateText.padEnd(7)} `;
+    for (let g = 1; g <= groups.length; g++) {
+      const groupText = `Grupo ${g}`;
+      headerLine += `│ ${groupText.padEnd(colWidth - 2)} `;
+    }
+    headerLine += '│';
+    lines.push(headerLine);
+    
+    // Linha separadora após cabeçalho
+    let sepLine = '├─────────';
+    for (let g = 0; g < groups.length; g++) {
+      sepLine += '┼' + '─'.repeat(colWidth);
+    }
+    sepLine += '┤';
+    lines.push(sepLine);
+    
+    // Linhas das levas
+    for (let l = 0; l < numLevas; l++) {
+      const levaText = `Leva ${l+1}`;
+      let levaLine = `│ ${levaText.padEnd(7)} `;
+      for (const grp of groups) {
+        const icon = grp.levas[l] ? checkedBox : ' ';
+        // Espaçamento fixo para largura 12
+        let cellContent;
+        if (grp.levas[l]) {
+          // Para ✓: espaçamento manual fixo (4 espaços + ✓ + 5 espaços = 10 chars)
+          cellContent = '    V     ';
+        } else {
+          // Para espaço vazio: 10 espaços
+          cellContent = '          ';
+        }
+        levaLine += `│ ${cellContent} `;
+      }
+      levaLine += '│';
+      lines.push(levaLine);
+    }
+    
+    // Linha inferior da tabela
+    let bottomLine = '└─────────';
+    for (let g = 0; g < groups.length; g++) {
+      bottomLine += '┴' + '─'.repeat(colWidth);
+    }
+    bottomLine += '┘';
+    lines.push(bottomLine);
+    
+    // Envolver em bloco de código para Discord
+    const tableContent = lines.join('\n');
+    outputEl.textContent = '```\n' + tableContent + '\n```';
   }
 
   function copyToClipboard(text){
@@ -494,7 +471,7 @@
     const nl = Math.max(1, Math.min(12, Number(numLevasInput.value) || 6));
     numGroupsInput.value = ng;
     numLevasInput.value = nl;
-    buildGroups(ng, nl);
+    buildTable(ng, nl);
   });
 
   copyBtn.addEventListener('click', ()=>{
@@ -507,12 +484,12 @@
   });
 
   resetBtn.addEventListener('click', ()=>{
-    if (!confirm('Tem certeza que deseja resetar todas as marcações?')) return;
-    buildGroups(Number(numGroupsInput.value), Number(numLevasInput.value));
+    if (!confirm('Resetar marcações?')) return;
+    buildTable(Number(numGroupsInput.value), Number(numLevasInput.value));
   });
 
   updateDate();
-  buildGroups(Number(numGroupsInput.value), Number(numLevasInput.value));
+  buildTable(Number(numGroupsInput.value), Number(numLevasInput.value));
   
   // Atualiza a data à meia-noite
   setInterval(()=>{
