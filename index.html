@@ -271,7 +271,7 @@
       <label>Levas por grupo</label>
       <input id="numLevas" type="number" min="1" max="12" value="6"/>
     </div>
-    <button id="applyBtn" class="btn btn-primary">V Aplicar</button>
+    <button id="applyBtn" class="btn btn-primary">✓ Aplicar</button>
     <div class="spacer"></div>
     <button id="resetBtn" class="btn btn-secondary">↻ Resetar</button>
   </div>
@@ -316,7 +316,7 @@
 
   let groups = [];
   const emptyBox = ' ';
-  const checkedBox = 'V';
+  const checkedBox = '✅';
 
   function updateDate(){
     const today = new Date();
@@ -425,14 +425,13 @@
       const levaText = `Leva ${l+1}`;
       let levaLine = `│ ${levaText.padEnd(7)} `;
       for (const grp of groups) {
-        const icon = grp.levas[l] ? checkedBox : ' ';
-        // Espaçamento fixo para largura 12
-        let cellContent;
+        // Solução final com 'OK' - ASCII puro, alinhamento perfeito
+        let cellContent = '';
         if (grp.levas[l]) {
-          // Para ✓: espaçamento manual fixo (4 espaços + ✓ + 5 espaços = 10 chars)
-          cellContent = '    V     ';
+          // Centraliza o "OK" em 10 espaços (4 antes, 4 depois)
+          cellContent = '    OK    '; 
         } else {
-          // Para espaço vazio: 10 espaços
+          // Célula vazia com 10 espaços
           cellContent = '          ';
         }
         levaLine += `│ ${cellContent} `;
