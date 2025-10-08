@@ -1,12 +1,12 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="favicon.png" />
-<link rel="shortcut icon" href="favicon.png" />
-<link rel="apple-touch-icon" href="favicon.png" />
+<!DOCTYPE html>
+<!-- saved from url=(0071)file:///C:/Users/User/Documents/GitHub/Meu-Filho-DonaGuimail/index.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="file:///C:/Users/User/Documents/GitHub/Meu-Filho-DonaGuimail/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="file:///C:/Users/User/Documents/GitHub/Meu-Filho-DonaGuimail/favicon.png">
+<link rel="shortcut icon" href="file:///C:/Users/User/Documents/GitHub/Meu-Filho-DonaGuimail/favicon.png">
+<link rel="apple-touch-icon" href="file:///C:/Users/User/Documents/GitHub/Meu-Filho-DonaGuimail/favicon.png">
 <title>Meu Filho</title>
 <style>
   :root{
@@ -220,6 +220,10 @@
     overflow-y:auto;
     letter-spacing:0;
     font-feature-settings:"liga" 0;
+    font-variant-ligatures:none;
+    text-rendering:optimizeSpeed;
+    font-variant-numeric:tabular-nums;
+    font-kerning:none;
   }
   
   footer{
@@ -260,16 +264,16 @@
 </head>
 <body>
 <div class="container">
-  <div class="header-date" id="headerDate"></div>
+  <div class="header-date" id="headerDate">08/10</div>
 
   <div class="controls">
     <div class="control-group">
       <label>Nº de Grupos</label>
-      <input id="numGroups" type="number" min="1" max="12" value="4"/>
+      <input id="numGroups" type="number" min="1" max="12" value="4">
     </div>
     <div class="control-group">
       <label>Levas por grupo</label>
-      <input id="numLevas" type="number" min="1" max="12" value="6"/>
+      <input id="numLevas" type="number" min="1" max="12" value="6">
     </div>
     <button id="applyBtn" class="btn btn-primary">✓ Aplicar</button>
     <div class="spacer"></div>
@@ -279,12 +283,9 @@
   <div class="table-container">
     <table id="mainTable">
       <thead>
-        <tr id="tableHeader">
-          <th></th>
-        </tr>
+        <tr id="tableHeader"><th></th><th>Grupo 1</th><th>Grupo 2</th><th>Grupo 3</th><th>Grupo 4</th></tr>
       </thead>
-      <tbody id="tableBody">
-      </tbody>
+      <tbody id="tableBody"><tr><td class="leva-label">Leva 1</td><td class="cell-clickable cell-checked" data-group="1" data-leva="1"></td><td class="cell-clickable cell-checked" data-group="2" data-leva="1"></td><td class="cell-clickable" data-group="3" data-leva="1"></td><td class="cell-clickable" data-group="4" data-leva="1"></td></tr><tr><td class="leva-label">Leva 2</td><td class="cell-clickable cell-checked" data-group="1" data-leva="2"></td><td class="cell-clickable" data-group="2" data-leva="2"></td><td class="cell-clickable" data-group="3" data-leva="2"></td><td class="cell-clickable cell-checked" data-group="4" data-leva="2"></td></tr><tr><td class="leva-label">Leva 3</td><td class="cell-clickable" data-group="1" data-leva="3"></td><td class="cell-clickable" data-group="2" data-leva="3"></td><td class="cell-clickable cell-checked" data-group="3" data-leva="3"></td><td class="cell-clickable" data-group="4" data-leva="3"></td></tr><tr><td class="leva-label">Leva 4</td><td class="cell-clickable" data-group="1" data-leva="4"></td><td class="cell-clickable" data-group="2" data-leva="4"></td><td class="cell-clickable cell-checked" data-group="3" data-leva="4"></td><td class="cell-clickable" data-group="4" data-leva="4"></td></tr><tr><td class="leva-label">Leva 5</td><td class="cell-clickable" data-group="1" data-leva="5"></td><td class="cell-clickable" data-group="2" data-leva="5"></td><td class="cell-clickable" data-group="3" data-leva="5"></td><td class="cell-clickable" data-group="4" data-leva="5"></td></tr><tr><td class="leva-label">Leva 6</td><td class="cell-clickable" data-group="1" data-leva="6"></td><td class="cell-clickable" data-group="2" data-leva="6"></td><td class="cell-clickable" data-group="3" data-leva="6"></td><td class="cell-clickable" data-group="4" data-leva="6"></td></tr></tbody>
     </table>
   </div>
 
@@ -293,7 +294,18 @@
       <button id="copyBtn" class="btn btn-primary">📋 Copiar formato Discord</button>
       <button id="copyPlainBtn" class="btn btn-secondary">Copiar só texto</button>
     </div>
-    <div id="output" class="output-container"></div>
+    <div id="output" class="output-container">```
+┌────────────┬────────┬────────┬────────┬────────┐
+│ 08/10      │ Grupo 1│ Grupo 2│ Grupo 3│ Grupo 4│
+├────────────┼────────┼────────┼────────┼────────┤
+│ Leva 1     │   ✓    │   ✓    │        │        │
+│ Leva 2     │   ✓    │        │        │   ✓    │
+│ Leva 3     │        │        │   ✓    │        │
+│ Leva 4     │        │        │   ✓    │        │
+│ Leva 5     │        │        │        │        │
+│ Leva 6     │        │        │        │        │
+└────────────┴────────┴────────┴────────┴────────┘
+```</div>
   </div>
 
   <footer>
@@ -323,6 +335,24 @@
     const day = String(today.getDate()).padStart(2,'0');
     const month = String(today.getMonth()+1).padStart(2,'0');
     headerDateEl.textContent = `${day}/${month}`;
+  }
+
+  // Sistema de cookies para salvar configurações
+  function saveSettings() {
+    const settings = {
+      numGroups: numGroupsInput.value,
+      numLevas: numLevasInput.value
+    };
+    localStorage.setItem('meuFilhoSettings', JSON.stringify(settings));
+  }
+
+  function loadSettings() {
+    const saved = localStorage.getItem('meuFilhoSettings');
+    if (saved) {
+      const settings = JSON.parse(saved);
+      numGroupsInput.value = settings.numGroups || 4;
+      numLevasInput.value = settings.numLevas || 6;
+    }
   }
 
   function buildTable(nGroups, nLevas) {
@@ -368,6 +398,47 @@
     renderOutput();
   }
 
+  // Função separada para construir o cabeçalho da tabela
+  function buildTableHeader() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2,'0');
+    const month = String(today.getMonth()+1).padStart(2,'0');
+    const dateText = `${day}/${month}`;
+
+    let lines = [];
+    
+    // LINHA SUPERIOR - CABEÇALHO
+    let topLine = '┌────────────';
+    for (let g = 0; g < groups.length; g++) {
+      topLine += '┬' + '─'.repeat(8);
+    }
+    topLine += '┐';
+    lines.push(topLine);
+    
+    // LINHA DO CABEÇALHO - EXATAMENTE COMO SEU EXEMPLO
+    let headerLine = `│ ${dateText.padEnd(10)} `;
+    for (let g = 1; g <= groups.length; g++) {
+      const groupText = `Grupo ${g}`;
+      headerLine += `│ ${groupText.padEnd(6)} `;
+    }
+    headerLine += '│';
+    
+    // REMOVER ESPAÇOS EXTRAS APÓS OS NÚMEROS DOS GRUPOS
+    headerLine = headerLine.replace(/Grupo (\d+) /g, 'Grupo $1');
+    
+    lines.push(headerLine);
+    
+    // LINHA SEPARADORA
+    let sepLine = '├────────────';
+    for (let g = 0; g < groups.length; g++) {
+      sepLine += '┼' + '─'.repeat(8);
+    }
+    sepLine += '┤';
+    lines.push(sepLine);
+    
+    return lines;
+  }
+
   function toggleCell(e){
     const td = e.currentTarget;
     const g = Number(td.dataset.group);
@@ -385,54 +456,26 @@
   }
 
   function renderOutput(){
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2,'0');
-    const month = String(today.getMonth()+1).padStart(2,'0');
-    const dateText = `${day}/${month}`;
-
     const numLevas = groups[0]?.levas.length || 0;
     let lines = [];
     
-    const colWidth = 12; // Largura aumentada para acomodar Unicode
+    // CONSTRUIR CABEÇALHO SEPARADO
+    const headerLines = buildTableHeader();
+    lines = lines.concat(headerLines);
     
-    // Linha superior da tabela
-    let topLine = '┌─────────';
-    for (let g = 0; g < groups.length; g++) {
-      topLine += '┬' + '─'.repeat(colWidth);
-    }
-    topLine += '┐';
-    lines.push(topLine);
-    
-    // Linha do cabeçalho com data e grupos
-    let headerLine = `│ ${dateText.padEnd(7)} `;
-    for (let g = 1; g <= groups.length; g++) {
-      const groupText = `Grupo ${g}`;
-      headerLine += `│ ${groupText.padEnd(colWidth - 2)} `;
-    }
-    headerLine += '│';
-    lines.push(headerLine);
-    
-    // Linha separadora após cabeçalho
-    let sepLine = '├─────────';
-    for (let g = 0; g < groups.length; g++) {
-      sepLine += '┼' + '─'.repeat(colWidth);
-    }
-    sepLine += '┤';
-    lines.push(sepLine);
-    
-    // Linhas das levas
+    // CONSTRUIR CORPO DA TABELA
     for (let l = 0; l < numLevas; l++) {
       const levaText = `Leva ${l+1}`;
-      let levaLine = `│ ${levaText.padEnd(7)} `;
+      let levaLine = `│ ${levaText.padEnd(10)} `;
       for (const grp of groups) {
-        // Solução final com 'OK' - ASCII puro, alinhamento perfeito
+        // Solução NATURAL com ✓ - padding proporcional
         let cellContent = '';
         if (grp.levas[l]) {
-          // Centraliza o "OK" em 10 espaços (4 antes, 4 depois)
-          cellContent = '    OK    '; 
+          // Usar ✓ com padding proporcional - centralizado
+          cellContent = '  ✓   '; 
         } else {
-          // Célula vazia com 10 espaços
-          cellContent = '          ';
+          // Célula vazia com 6 espaços - mantém alinhamento
+          cellContent = '      ';
         }
         levaLine += `│ ${cellContent} `;
       }
@@ -441,9 +484,9 @@
     }
     
     // Linha inferior da tabela
-    let bottomLine = '└─────────';
+    let bottomLine = '└────────────';
     for (let g = 0; g < groups.length; g++) {
-      bottomLine += '┴' + '─'.repeat(colWidth);
+      bottomLine += '┴' + '─'.repeat(8);
     }
     bottomLine += '┘';
     lines.push(bottomLine);
@@ -471,6 +514,7 @@
     numGroupsInput.value = ng;
     numLevasInput.value = nl;
     buildTable(ng, nl);
+    saveSettings(); // Salvar configurações
   });
 
   copyBtn.addEventListener('click', ()=>{
@@ -488,6 +532,7 @@
   });
 
   updateDate();
+  loadSettings(); // Carregar configurações salvas
   buildTable(Number(numGroupsInput.value), Number(numLevasInput.value));
   
   // Atualiza a data à meia-noite
@@ -500,5 +545,6 @@
   }, 60000);
 })();
 </script>
-</body>
-</html>
+
+
+</body></html>
